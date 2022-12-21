@@ -1,0 +1,22 @@
+<h1>Buscaminas</h1>
+
+<table>
+  <tr *ngFor="let fila of casillas; index as i">
+    <td *ngFor="let casilla of fila; index as j" (click)="mostrarCasilla(i, j)">
+      <!-- Muestra el contenido de la casilla -->
+      <ng-template [ngIf]="casilla.abierta && !casilla.esMina">
+        <!-- Muestra el número de minas alrededor -->
+        {{ contarMinasAlrededor(i, j) }}
+      </ng-template>
+      <ng-template class="mina" [ngIf]="casilla.esMina && casilla.abierta">
+        <!-- Muestra una mina -->
+    <td class="mina">💣</td>
+    </ng-template>
+    <ng-template [ngIf]="!casilla.abierta">
+      <!-- Muestra una casilla cerrada -->
+      &#9679;
+    </ng-template>
+    </td>
+
+  </tr>
+</table>
